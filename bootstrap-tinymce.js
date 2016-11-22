@@ -21,6 +21,8 @@ angular.module('schemaForm-tinymce', ['schemaForm', 'ui.tinymce']).config([
                         f.editor.hide()
                     }
                 };
+                f.tinymceOptions.plugins = f.tinymceOptions.plugins || 'advlist autolink lists link image hr searchreplace wordcount visualblocks visualchars code fullscreen table directionality paste textcolor colorpicker textpattern imagetools'
+                f.tinymceOptions.toolbar1 = f.tinymceOptions.toolbar1 || 'undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link unlink image'
                 options.lookup[sfPathProvider.stringify(options.path)] = f;
                 return f;
             }
