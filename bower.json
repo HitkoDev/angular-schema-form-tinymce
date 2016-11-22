@@ -28,8 +28,9 @@
     "coverage"
   ],
   "dependencies": {
-    "tx-tinymce": ">= 0.0.5",
-    "tinymce": ">= 4.0.0"
+    "angular": "^1.5.8",
+    "tinymce": "^4.4.3",
+    "angular-ui-tinymce": "^0.0.17"
   },
   "devDependencies": {
     "angular-schema-form": ">= 0.7",

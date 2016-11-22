@@ -28,5 +28,10 @@
     "sinon": "^1.9.0",
     "sinon-chai": "^2.5.0",
     "streamqueue": "0.0.5"
+  },
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-tinymce": "0.0.17",
+    "tinymce": "^4.4.3"
   }
 }

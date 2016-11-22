@@ -9,57 +9,57 @@ var uglify = require('gulp-uglify');
 var streamqueue = require('streamqueue');
 var jscs = require('gulp-jscs');
 
-gulp.task('minify', function() {
-  var stream = streamqueue({objectMode: true});
-  stream.queue(
-              gulp.src('./src/*.html')
-                  .pipe(minifyHtml({
-                    empty: true,
-                    spare: true,
-                    quotes: true
-                  }))
-                  .pipe(templateCache({
-                    module: 'schemaForm',
-                    root: 'directives/decorators/bootstrap/tinymce/'
-                  }))
+gulp.task('minify', function () {
+    var stream = streamqueue({ objectMode: true });
+    stream.queue(
+        gulp.src('./src/*.html')
+            .pipe(minifyHtml({
+                empty: true,
+                spare: true,
+                quotes: true
+            }))
+            .pipe(templateCache({
+                module: 'schemaForm',
+                root: 'directives/decorators/bootstrap/tinymce/'
+            }))
     );
-  stream.queue(gulp.src('./src/*.js'));
+    stream.queue(gulp.src('./src/*.js'));
 
-  stream.done()
+    stream.done()
         .pipe(concat('bootstrap-tinymce.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('.'));
 
 });
 
-gulp.task('non-minified-dist', function() {
-  var stream = streamqueue({objectMode: true});
-  stream.queue(
-              gulp.src('./src/*.html')
-                  .pipe(templateCache({
-                    module: 'schemaForm',
-                    root: 'directives/decorators/bootstrap/tinymce/'
-                  }))
+gulp.task('non-minified-dist', function () {
+    var stream = streamqueue({ objectMode: true });
+    stream.queue(
+        gulp.src('./src/*.html')
+            .pipe(templateCache({
+                module: 'schemaForm',
+                root: 'directives/decorators/bootstrap/tinymce/'
+            }))
     );
-  stream.queue(gulp.src('./src/*.js'));
+    stream.queue(gulp.src('./src/*.js'));
 
-  stream.done()
+    stream.done()
         .pipe(concat('bootstrap-tinymce.js'))
         .pipe(gulp.dest('.'));
 
 });
 
-gulp.task('jscs', function() {
-  gulp.src('./src/**/*.js')
-      .pipe(jscs());
+gulp.task('jscs', function () {
+    gulp.src('./src/**/*.js')
+        .pipe(jscs());
 });
 
 gulp.task('default', [
-  'minify',
-  'non-minified-dist',
-  'jscs'
+    'minify',
+    'non-minified-dist',
+    //'jscs'
 ]);
 
-gulp.task('watch', function() {
-  gulp.watch('./src/**/*', ['default']);
+gulp.task('watch', function () {
+    gulp.watch('./src/**/*', ['default']);
 });
