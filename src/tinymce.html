@@ -1,5 +1,6 @@
 <div class="form-group" ng-class="{'has-error': hasError()}">
     <label class="control-label" ng-show="showTitle()">{{form.title}}</label>
-    <textarea ui-tinymce="form.tinymceOptions" ng-model="$$value$$" schema-validate="form"></textarea>
+    <textarea ui-tinymce="form.tinymceOptions" ng-model="$$value$$" schema-validate="form" class="form-control" rows="12" cols="50"></textarea>
     <span class="help-block">{{ (hasError() && errorMessage(schemaError())) || form.description}}</span>
+    <span ng-click="form.toggleEditor()">Toggle editor</span>
 </div>

@@ -25,7 +25,7 @@ gulp.task('minify', function () {
     );
     stream.queue(gulp.src('./src/*.js'));
 
-    stream.done()
+    return stream.done()
         .pipe(concat('bootstrap-tinymce.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('.'));
@@ -43,14 +43,14 @@ gulp.task('non-minified-dist', function () {
     );
     stream.queue(gulp.src('./src/*.js'));
 
-    stream.done()
+    return stream.done()
         .pipe(concat('bootstrap-tinymce.js'))
         .pipe(gulp.dest('.'));
 
 });
 
 gulp.task('jscs', function () {
-    gulp.src('./src/**/*.js')
+    return gulp.src('./src/**/*.js')
         .pipe(jscs());
 });
 
